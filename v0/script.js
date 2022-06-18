@@ -6,7 +6,7 @@ let ai;
 
 function setup() {
     createCanvas(600, 600);
-    frameRate(60);
+    frameRate(0.5);
     pieces.push(new Piece(floor(Math.random()*19), 400, 400));
     pieces.push(new Piece(floor(Math.random()*19), 225, 400));
     pieces.push(new Piece(floor(Math.random()*19), 50, 400));
@@ -51,7 +51,6 @@ function draw() {
     }
     if (!board.lost && !board.canMv()) {board.lost = true; console.log("only " + board.score + "???");}
     ai.bestMove();
-    console.log(ai.open35(board.bools));
 }
 
 function mousePressed() {
