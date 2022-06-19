@@ -167,36 +167,49 @@ class Brain {
     bestMove() {
         this.hypReset();
         var order;
-        var permutations = [ [0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0] ];
+        //var permutations = [ [0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0] ];
+        var permutations;
+        if (pieces[0].w+pieces[0].h >= pieces[1].w+pieces[1].h) {
+            if (pieces[1].w+pieces[1].h >= pieces[2].w+pieces[2].h) {permutations = [2, 1, 0];}
+            else {
+                if (pieces[2].w+pieces[2].h >= pieces[0].w+pieces[0].h) {permutations = [1, 0, 2];}
+                else {permutations = [1, 2, 0];}
+            }
+        } else {
+            if (pieces[0].w+pieces[0].h >= pieces[2].w+pieces[2].h) {permutations = [2, 0, 1];}
+            else {
+                if (pieces[2].w+pieces[2].h >= pieces[1].w+pieces[1].h) {permutations = [0, 1, 2];}
+                else {permutations = [0, 2, 1];}
+            }
+        }
 
         var rs = [-1, -1, -1];
         var cs = [-1, -1, -1];
         var min = 0;
         
-        for (var h=0; h<6; h++) {
-        for (var i=0; i<=10-pieces[permutations[h][0]].h/30; i++) {
-            for (var j=0; j<=10-pieces[permutations[h][0]].w/30; j++) {
+        for (var i=0; i<=10-pieces[permutations[0]].h/30; i++) {
+            for (var j=0; j<=10-pieces[permutations[0]].w/30; j++) {
                 
-                for (var k=0; k<=10-pieces[permutations[h][1]].h/30; k++) {
-                    for (var l=0; l<=10-pieces[permutations[h][1]].w/30; l++) {
+                for (var k=0; k<=10-pieces[permutations[1]].h/30; k++) {
+                    for (var l=0; l<=10-pieces[permutations[1]].w/30; l++) {
 
-                        for (var m=0; m<=10-pieces[permutations[h][2]].h/30; m++) {
-                            for (var n=0; n<=10-pieces[permutations[h][2]].w/30; n++) {
+                        for (var m=0; m<=10-pieces[permutations[2]].h/30; m++) {
+                            for (var n=0; n<=10-pieces[permutations[2]].w/30; n++) {
 
-                                if (this.hypCheckMove(permutations[h][0], i, j)) {
-                                    this.hypMove(permutations[h][0], i, j); this.hypCheck();
-                                    if (this.hypCheckMove(permutations[h][1], k, l)) {
-                                        this.hypMove(permutations[h][1], k, l); this.hypCheck();
-                                        if (this.hypCheckMove(permutations[h][2], m, n)) {
-                                            this.hypMove(permutations[h][2], m, n); this.hypCheck();
+                                if (this.hypCheckMove(permutations[0], i, j)) {
+                                    this.hypMove(permutations[0], i, j); this.hypCheck();
+                                    if (this.hypCheckMove(permutations[1], k, l)) {
+                                        this.hypMove(permutations[1], k, l); this.hypCheck();
+                                        if (this.hypCheckMove(permutations[2], m, n)) {
+                                            this.hypMove(permutations[2], m, n); this.hypCheck();
                                             if (rs[0] == -1) {
-                                                order = permutations[h];
+                                                //order = permutations[h];
                                                 min = this.corners(this.hyp);
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
                                                 cs[0] = j; cs[1] = l; cs[2] = n;
                                             }
                                             else if (this.corners(this.hyp) < min) {
-                                                order = permutations[h];
+                                                //order = permutations[h];
                                                 min = this.corners(this.hyp);
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
                                                 cs[0] = j; cs[1] = l; cs[2] = n;
@@ -212,10 +225,9 @@ class Brain {
                 }
             }
         }
-        }
         //console.log(rs[0]);
         if (rs[0] == -1) {return;}
-        this.move(order[0], rs[0], cs[0]); board.check(); this.move(order[1], rs[1], cs[1]); board.check(); this.move(order[2], rs[2], cs[2]); board.check(); 
+        this.move(permutations[0], rs[0], cs[0]); board.check(); this.move(permutations[1], rs[1], cs[1]); board.check(); this.move(permutations[2], rs[2], cs[2]); board.check(); 
 
     }
 
