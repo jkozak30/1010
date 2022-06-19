@@ -3,11 +3,12 @@ class Brain {
     // notes.
     // so i think he needs to know about corners **
     // also order of moves
+      // subpoint: looking three moves ahead ** 
     // also whether theres an open 3x3
     // also holes
     // also fill distribution (maybe sums of squares of rows/cols, take max(rows, cols))
     // also EXPECTED SCORE
-    // his best rn lol: 929 (hey thats NYC)
+    // his best rn lol: 8334
     // MINE IS LITERALLY 30k
     constructor() {
         this.hyp = [];
