@@ -7,7 +7,7 @@ let t = 0;
 
 function setup() {
     createCanvas(600, 600);
-    frameRate(10);
+    //frameRate(10);
     pieces.push(new Piece(floor(Math.random()*19), 400, 400));
     pieces.push(new Piece(floor(Math.random()*19), 225, 400));
     pieces.push(new Piece(floor(Math.random()*19), 50, 400));

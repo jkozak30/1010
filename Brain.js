@@ -230,11 +230,11 @@ class Brain {
                                             //console.log(this.weightedNumSqs(this.hyp));
                                             if (rs[0] == -1) {
                                                 order = permutations[h];
-                                                min = this.corners(this.hyp) + this.numSqs(this.hyp)/100.0;
+                                                min = this.corners(this.hyp) + this.numSqs(this.hyp)/30.0;
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
                                                 cs[0] = j; cs[1] = l; cs[2] = n;
                                             }
-                                            else if (this.corners(this.hyp)+this.numSqs(this.hyp)/100.0 < min) {
+                                            else if (this.corners(this.hyp)+this.numSqs(this.hyp)/30.0 < min) {
                                                 order = permutations[h];
                                                 min = this.corners(this.hyp);
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
