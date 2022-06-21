@@ -25,6 +25,42 @@ function corners(bools) {
     return c;
 }
 
+function hypCheck() {
+    let clearR = [];
+    let clearC = [];
+    for (var c=0; c<10; c++) {
+        var cCtr = 0;
+        for (var r=0; r<10; r++) {
+            if (hyp[r][c]) {cCtr++;}
+        }
+        if (cCtr == 10) {clearC.push(c);}
+    }
+    for (var r=0; r<10; r++) {
+        var rCtr = 0;
+        for (var c=0; c<10; c++) {
+            if (hyp[r][c]) {rCtr ++;}
+        }
+        if (rCtr == 10) {clearR.push(r);}
+    }
+    //console.log(clearC.length);
+    for (var c=0; c<clearC.length; c++) {
+        for (var r=0; r<10; r++) {
+            //this.colors[r][clearC[c]] = color(227);
+            hyp[r][clearC[c]] = false;
+        }
+        //this.score += 10;
+    }
+    for (var r=0; r<clearR.length; r++) {
+        //console.log("are yoy called");
+        for (var c=0; c<10; c++) {
+            //this.colors[clearR[r]][c] = color(227);
+            hyp[clearR[r]][c] = false;
+            //console.log(this.colors[r][c]);
+        }
+        //this.score += 10 - clearC.length;
+    }
+}
+
 function weightedNumSqs(bools) {
     var sum = 0;
     for (var i=0; i<10; i++) {
@@ -63,7 +99,13 @@ function setup() {
     hyp[9][9] = true;
     hyp[8][9] = true;
     hyp[9][8] = true;
+    hyp[4][4] = true;
+    
+    for (var i=0; i<10; i++) {
+        hyp[0][i] = true;
+    }
+    hypCheck();
     whatDaHypDoin();
-    console.log(corners(hyp));
+    //console.log(corners(hyp));
     console.log(weightedNumSqs(hyp));
 }
