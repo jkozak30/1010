@@ -8,7 +8,7 @@ class Brain {
     // also holes
     // also fill distribution (maybe sums of squares of rows/cols, take max(rows, cols))
     // also EXPECTED SCORE
-    // his best rn lol: 16730
+    // his best rn lol: 598393
     // MINE IS LITERALLY 30k
     constructor() {
         this.hyp = [];
@@ -188,7 +188,7 @@ class Brain {
         this.hypReset();
         var order;
         var permutations;
-        if (this.numSqs(this.hyp) >= 25) {
+        if (this.numSqs(this.hyp) >= 40) {
             permutations = [ [0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0] ];
         } else {
             if (pieces[0].w+pieces[0].h >= pieces[1].w+pieces[1].h) {

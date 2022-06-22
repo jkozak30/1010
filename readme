@@ -1,0 +1,9 @@
+1010 ai.
+best: 598393 (*) (**)
+
+This is a brute force 1010 ai that looks three moves ahead and evaluates a cost for each board state.
+Coded in JavaScript, graphics p5js
+
+
+(*) he didn't even lose, I just couldn't wait any longer
+(**) he's somewhat nerfed for efficiency reasons
