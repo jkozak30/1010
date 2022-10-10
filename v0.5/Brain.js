@@ -8,7 +8,6 @@ class Brain {
     // also fill distribution (maybe sums of squares of rows/cols, take max(rows, cols))
     // also EXPECTED SCORE
     // his best rn lol: 929 (hey thats NYC)
-    // MINE IS LITERALLY 30k
     constructor() {
         this.hyp = [];
         for (var i=0; i<10; i++) {

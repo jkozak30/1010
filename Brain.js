@@ -9,7 +9,6 @@ class Brain {
     // also fill distribution (maybe sums of squares of rows/cols, take max(rows, cols))
     // also EXPECTED SCORE
     // his best rn lol: 598393
-    // MINE IS LITERALLY 30k
     constructor() {
         this.hyp = [];
         for (var i=0; i<10; i++) {
@@ -230,13 +229,13 @@ class Brain {
                                             //console.log(this.weightedNumSqs(this.hyp));
                                             if (rs[0] == -1) {
                                                 order = permutations[h];
-                                                min = this.corners(this.hyp) + this.weightedNumSqs(this.hyp)/10.0;
+                                                min = this.corners(this.hyp) + this.weightedNumSqs(this.hyp)/10.41;
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
                                                 cs[0] = j; cs[1] = l; cs[2] = n;
                                             }
-                                            else if (this.corners(this.hyp)+this.weightedNumSqs(this.hyp)/10.0 < min) {
+                                            else if (this.corners(this.hyp)+this.weightedNumSqs(this.hyp)/10.41 < min) {
                                                 order = permutations[h];
-                                                min = this.corners(this.hyp) + this.weightedNumSqs(this.hyp)/10.0;
+                                                min = this.corners(this.hyp) + this.weightedNumSqs(this.hyp)/10.41;
                                                 rs[0] = i; rs[1] = k; rs[2] = m;
                                                 cs[0] = j; cs[1] = l; cs[2] = n;
                                             }
